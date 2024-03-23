@@ -67,7 +67,7 @@ input {
 
 .add-form button {
 	text-transform: uppercase;
-	background-color: #615d6c;
+	background-color: #259747;
 }
 
 .list {
@@ -89,6 +89,7 @@ input {
 	font-size: 1.4rem;
 	font-weight: 700;
 	margin: 0 0.8rem;
+	padding-right: 2rem;
 }
 
 .list ul {
