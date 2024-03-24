@@ -8,11 +8,6 @@ interface IForm {
 
 const Form: React.FC<IForm> = ({ setToDos, toDos }) => {
 	const [description, setDescription] = useState('')
-	const [quantity, setQuantity] = useState(1)
-
-	const handleQuantity = (e: any) => {
-		setQuantity(+e.target.value)
-	}
 
 	const handleDescription = (e: any) => {
 		setDescription(e.target.value)
@@ -21,26 +16,15 @@ const Form: React.FC<IForm> = ({ setToDos, toDos }) => {
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
 
-		const newToDo = { id: Date.now(), description, quantity, packed: false }
+		const newToDo = { id: Date.now(), description, completed: false }
 
-		if (description && quantity) setToDos([...(toDos || []), newToDo])
+		if (description) setToDos([...(toDos || []), newToDo])
+		setDescription('')
 	}
 
 	return (
 		<form className='add-form' onSubmit={handleSubmit}>
 			<h3>Add some dotos</h3>
-			<select
-				name='quantity'
-				id='quantity'
-				value={quantity}
-				onChange={e => handleQuantity(e)}
-			>
-				{Array.from({ length: 20 }, (_, i: number) => i + 1).map(num => (
-					<option value={num} key={num}>
-						{num}
-					</option>
-				))}
-			</select>
 			<input
 				type='text'
 				placeholder='item...'

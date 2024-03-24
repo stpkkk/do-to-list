@@ -16,8 +16,8 @@ const Item: React.FC<ItemProps> = ({ item, toDos, setToDos }) => {
 	return (
 		<li>
 			<input type='checkbox' />
-			<span style={item.packed ? { textDecoration: 'line-through' } : {}}>
-				{item.quantity} {item.description}
+			<span style={item.completed ? { textDecoration: 'line-through' } : {}}>
+				{item.description}
 			</span>
 			<button
 				onClick={() => onRemoveToDoClick(item)}

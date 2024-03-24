@@ -107,6 +107,8 @@ input {
 .list li {
 	display: flex;
 	align-items: center;
+	word-wrap: break-word;
+	word-break: break-all;
 	gap: 1.2rem;
 }
 
@@ -114,6 +116,11 @@ input[type='checkbox'] {
 	height: 2rem;
 	width: 2rem;
 	accent-color: #615d6c;
+}
+
+.checkbox {
+	width: 2rem;
+	height: 2rem;
 }
 
 .list li button {
