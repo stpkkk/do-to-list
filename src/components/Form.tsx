@@ -2,23 +2,23 @@ import React, { useState } from 'react'
 import { IToDo } from '../types'
 
 interface IForm {
-	toDos: IToDo[] | null
-	setToDos: React.Dispatch<React.SetStateAction<IToDo[] | null>>
+	setItems: React.Dispatch<React.SetStateAction<IToDo[]>>
 }
 
-const Form: React.FC<IForm> = ({ setToDos, toDos }) => {
+const Form: React.FC<IForm> = ({ setItems }) => {
 	const [description, setDescription] = useState('')
 
-	const handleDescription = (e: any) => {
+	const handleDescription = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setDescription(e.target.value)
 	}
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
+		if (!description) return
 
-		const newToDo = { id: Date.now(), description, completed: false }
+		const newItem = { id: Date.now(), description, completed: false }
+		setItems(items => [...items, newItem])
 
-		if (description) setToDos([...(toDos || []), newToDo])
 		setDescription('')
 	}
 

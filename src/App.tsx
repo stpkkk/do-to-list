@@ -4,13 +4,13 @@ import './index.css'
 import { IToDo } from './types'
 
 function App() {
-	const [toDos, setToDos] = useState<IToDo[] | null>([])
+	const [items, setItems] = useState<IToDo[]>([])
 
 	return (
 		<div className='app'>
 			<Logo />
-			<Form toDos={toDos} setToDos={setToDos} />
-			<List toDos={toDos} setToDos={setToDos} />
+			<Form setItems={setItems} />
+			<List items={items} setItems={setItems} />
 			<Stats />
 		</div>
 	)

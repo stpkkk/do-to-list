@@ -3,24 +3,39 @@ import { IToDo } from '../types'
 
 interface ItemProps {
 	item: IToDo
-	toDos: IToDo[]
-	setToDos: React.Dispatch<React.SetStateAction<IToDo[] | null>>
+	setItems: React.Dispatch<React.SetStateAction<IToDo[]>>
 }
 
-const Item: React.FC<ItemProps> = ({ item, toDos, setToDos }) => {
-	const onRemoveToDoClick = (clickedItem: IToDo) => {
-		const updatedToDos = toDos.filter(item => item.id !== clickedItem.id)
-		setToDos(updatedToDos)
+const Item: React.FC<ItemProps> = ({ item, setItems }) => {
+	const handleDeleteItem = (clickedItem: IToDo) => {
+		const updatedItems = (items: IToDo[]) =>
+			items.filter(item => item.id !== clickedItem.id)
+
+		setItems(updatedItems)
+	}
+
+	const handleComplete = (item: IToDo) => {
+		const updatedItem = { ...item, completed: !item.completed }
+
+		setItems(prevItems =>
+			prevItems.map(prevItem =>
+				prevItem.id === item.id ? updatedItem : prevItem
+			)
+		)
 	}
 
 	return (
 		<li>
-			<input type='checkbox' />
+			<input
+				type='checkbox'
+				checked={item.completed}
+				onChange={() => handleComplete(item)}
+			/>
 			<span style={item.completed ? { textDecoration: 'line-through' } : {}}>
 				{item.description}
 			</span>
 			<button
-				onClick={() => onRemoveToDoClick(item)}
+				onClick={() => handleDeleteItem(item)}
 				type='button'
 				className='button'
 			>

@@ -3,18 +3,17 @@ import Item from './Item'
 import { IToDo } from '../types'
 
 interface IList {
-	toDos: IToDo[] | null
-	setToDos: React.Dispatch<React.SetStateAction<IToDo[] | null>>
+	items: IToDo[]
+	setItems: React.Dispatch<React.SetStateAction<IToDo[]>>
 }
 
-const List: React.FC<IList> = ({ toDos, setToDos }) => {
+const List: React.FC<IList> = ({ items, setItems }) => {
 	return (
 		<div className='list'>
 			<ul>
-				{toDos &&
-					toDos.map(item => (
-						<Item item={item} toDos={toDos} setToDos={setToDos} key={item.id} />
-					))}
+				{items.map(item => (
+					<Item item={item} setItems={setItems} key={item.id} />
+				))}
 			</ul>
 		</div>
 	)
