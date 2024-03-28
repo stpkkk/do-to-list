@@ -11,7 +11,7 @@ function App() {
 			<Logo />
 			<Form setItems={setItems} />
 			<List items={items} setItems={setItems} />
-			<Stats />
+			<Stats items={items} />
 		</div>
 	)
 }
