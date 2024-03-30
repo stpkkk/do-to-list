@@ -25,24 +25,26 @@ const Item: React.FC<ItemProps> = ({ item, setItems }) => {
 	}
 
 	return (
-		<li>
-			<input
-				type='checkbox'
-				checked={item.completed}
-				onChange={() => handleComplete(item)}
-			/>
-			<span style={item.completed ? { textDecoration: 'line-through' } : {}}>
-				{item.description}
-			</span>
-			<button
-				onClick={() => handleDeleteItem(item)}
-				type='button'
-				className='button'
-			>
-				&times;
-			</button>
-		</li>
-	)
+    <li>
+      <div>
+        <input
+          type="checkbox"
+          checked={item.completed}
+          onChange={() => handleComplete(item)}
+        />
+      </div>
+      <span style={item.completed ? { textDecoration: "line-through" } : {}}>
+        {item.description}
+      </span>
+      <button
+        onClick={() => handleDeleteItem(item)}
+        type="button"
+        className="button"
+      >
+        &times;
+      </button>
+    </li>
+  );
 }
 
 export default Item
